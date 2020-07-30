@@ -1,3 +1,5 @@
+require './language.rb'
+
 module TypeTextSlowly
     def type(speed='medium')
         case speed
@@ -18,6 +20,28 @@ class String
     include TypeTextSlowly
 end
 
+class Character
+    attr_accessor :name, :age
+
+    def initialize(name, age)
+        @name = name
+        @age = age
+    end
+
+    def greet(person, friendliness="neutral")
+
+        case friendliness
+        when "friendly"
+            greeting_question = "To what do I owe this pleasure, friend?"
+        when "neutral"
+            greeting_question = "Can I help you with something?"
+        when "unfriendly"
+            greeting_question = "What do you want?"
+        end
+        "Hello, #{person}. #{greeting_question}".type
+    end
+end
+
 def wait(length_of_pause='medium')
     case length_of_pause
     when 'short'
@@ -31,12 +55,20 @@ def wait(length_of_pause='medium')
 end
 
 
-string = "This is a test string"
+# barman = Character.new("Jonathon Gillingham", 48)
 
-string.type('quick')
-wait('short')
-string.type
-wait
-string.type('slow')
-wait('long')
+# barman.greet("Joe")
+# barman.greet(barman.name)
+
+
+
+
+# string = "This is a test string"
+
+# string.type('quick')
+# wait('short')
+# string.type
+# wait
+# string.type('slow')
+# wait('long')
 
