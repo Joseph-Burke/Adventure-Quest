@@ -18,9 +18,25 @@ class String
     include TypeTextSlowly
 end
 
-def wait(num_of_seconds)
-    sleep num_of_seconds
+def wait(length_of_pause='medium')
+    case length_of_pause
+    when 'short'
+        length_of_pause = 1
+    when 'medium'
+        length_of_pause = 2
+    when 'long'
+        length_of_pause = 3
+    end
+    sleep(length_of_pause)
 end
 
 
+string = "This is a test string"
+
+string.type('quick')
+wait('short')
+string.type
+wait
+string.type('slow')
+wait('long')
 
