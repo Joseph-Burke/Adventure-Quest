@@ -1,3 +1,7 @@
+require './language.rb'
+require './utilities.rb'
+
+
 class Character
     attr_accessor :name, :age
 
@@ -19,3 +23,5 @@ class Character
         "Hello, #{person}. #{greeting_question}".type
     end
 end
+
+joe = Character.new("Joe Burke", 23)

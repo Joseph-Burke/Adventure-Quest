@@ -1,3 +1,6 @@
+require './characters.rb'
+require './utilities.rb'
+
 class Speech
     attr_accessor :words_spoken
     def initialize(speaker, audience, words_spoken)
@@ -8,5 +11,11 @@ class Speech
 
     def utter
         @words_spoken.type
+    end
+end
+
+class Greeting < Speech
+    def initialize(speaker, audience, words_spoken)
+        super
     end
 end

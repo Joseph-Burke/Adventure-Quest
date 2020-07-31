@@ -1,3 +1,6 @@
+# require './language.rb'
+# require './characters.rb'
+
 def wait(length_of_pause='medium')
     case length_of_pause
     when 'short'
