@@ -25,11 +25,11 @@ end
 module Utilities
     def type(speed='medium')
         case speed
-        when 'slow'
+        when 'slow' || 3
             speed_multiplier = 0.3
-        when 'medium'
+        when 'medium' || 2
             speed_multiplier = 0.2
-        when 'quick'
+        when 'quick' || 1
             speed_multiplier = 0.1
         end
         arr = self.split('')
