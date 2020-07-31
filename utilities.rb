@@ -1,13 +1,10 @@
-# require './language.rb'
-# require './characters.rb'
-
 def wait(length_of_pause='medium')
     case length_of_pause
-    when 'short'
+    when 'short' || 1
         length_of_pause = 1
-    when 'medium'
+    when 'medium' || 2
         length_of_pause = 2
-    when 'long'
+    when 'long' || 3
         length_of_pause = 3
     end
     sleep(length_of_pause)
@@ -41,6 +38,9 @@ module Utilities
     end
 end
 
+def empty_line(num=1)
+    num.times {puts}
+end
 
 
 class String
