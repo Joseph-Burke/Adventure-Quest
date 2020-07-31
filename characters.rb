@@ -13,4 +13,3 @@ end
 
 joe = Character.new("Joe Burke", 23)
 
-joe.say_hello
