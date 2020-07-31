@@ -41,3 +41,15 @@ possible greetings and choose one at random from the range appropriate.
 3.  While this all works fine for standard pieces of speech such as greeting, saying farewell,
     thanking, warning, etc., there will also be times when more scripted interactions will be 
     required, such as delivering quests or conveying intrigue.
+
+## Locations
+
+Locations will also be an important aspect of the game. It's important to have the ability to observe one's surroundings.
+
+The player should certainly always have the ability to "look around" and receive a description of the people and objects around
+with which the player may interact. Therefore, instances of a Location class can be created, storing all the information about
+the location where the player currently is.
+
+Each Location instance should have a list of characters present. Presuming that these characters can only be in one place at 
+a time, the characters could themselves have a "location" property which holds information about where the character presently is.
+Would it be possible for these two values to interact, allowing a change in a character's location to be reflected in the 'character list' of the location.
