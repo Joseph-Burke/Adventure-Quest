@@ -10,3 +10,13 @@ properties which will change depending on the speaker's characteristics such as 
 formality, gender, etc., and those of the audience as well.
 
 I am a bit unsure of how my "possible greetings" array should be stored. Within the Greetings class? Within 
+
+## List of Tasks
+
+1. Create a Character class in characters.rb
+
+2. Create a Speaking module in language.rb and include it in the Character class.
+
+3. Create a Speech class for items of speech. 
+
+4. Create a universally accessible $array_of_possible_greetings in the Speaking module and fill it with Speech objects

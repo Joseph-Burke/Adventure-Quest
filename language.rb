@@ -1,6 +1,3 @@
-require './characters.rb'
-require './utilities.rb'
-
 class Speech
     attr_accessor :words_spoken
     def initialize(speaker, audience, words_spoken)
@@ -19,3 +16,10 @@ class Greeting < Speech
         super
     end
 end
+
+module Speaking
+    def say_hello
+        print "hello"
+    end
+end
+
