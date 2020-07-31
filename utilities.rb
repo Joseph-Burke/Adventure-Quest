@@ -13,6 +13,18 @@ def wait(length_of_pause='medium')
     sleep(length_of_pause)
 end
 
+def roll_dice(probability)
+    case probability
+    when 3
+        return true if rand(1..6) % 2 == 0 
+    when 2
+        return true if rand(1..6) % 3 == 0
+    when 1
+        return true if rand(1..6) % 6 == 0
+    end
+    false
+end
+
 module Utilities
     def type(speed='medium')
         case speed
@@ -28,6 +40,8 @@ module Utilities
         print "\n"
     end
 end
+
+
 
 class String
     include Utilities

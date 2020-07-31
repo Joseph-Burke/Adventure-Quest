@@ -21,20 +21,32 @@ class Greeting < Speech
     POSSIBLE_GREETINGS_ARRAY = []
 end
 
-# test_speech.say
-# puts test_speech.friendliness
-# p test_speech
 
 module Speaking
-    def say_hello
-        print "hello"
+    def greet
+        greeting_chosen = false
+        arr = Greeting::POSSIBLE_GREETINGS_ARRAY
+        until greeting_chosen 
+            possible_greeting = arr[rand(arr.length)]
+            friendliness_difference = (self.friendliness - possible_greeting.friendliness).round(1).abs
+            next if friendliness_difference > 0.2
+            case friendliness_difference
+            # 50% chance of saying that.
+            when 0.0
+                (possible_greeting.say; greeting_chosen = true) if roll_dice(3)
+            # 33% chance of saying that.
+            when 0.1
+                (possible_greeting.say; greeting_chosen = true) if roll_dice(2)
+            # 25% chance of saying that.
+            when 0.2
+                (possible_greeting.say; greeting_chosen = true) if roll_dice(1)
+            end
+        end
     end
 end
 
-
-
 Greeting.new("Greetings.", 0.4)
-Greeting.new("Hello.", 0.3)
+Greeting.new("Hello.", 0.4)
 Greeting.new("How do you do?", 0.5)
 Greeting.new("Howdy!", 0.6)
 Greeting.new("What's up?!", 0.5)
@@ -44,7 +56,7 @@ Greeting.new("Hello, stranger.", 0.4)
 Greeting.new("Hi!", 0.6)
 Greeting.new("Hey!", 0.6)
 Greeting.new("How goes it?", 0.7)
-
-Greeting::POSSIBLE_GREETINGS_ARRAY[rand(Greeting::POSSIBLE_GREETINGS_ARRAY.length)].say
+Greeting.new("What do you want?", 0.3)
+Greeting.new("What are you looking at?", 0.2)
 
 
