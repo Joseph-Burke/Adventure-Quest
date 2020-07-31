@@ -12,7 +12,7 @@ brandon = Character.new("Brandon", 35, 0.2, tavern)
 oyeleke = Character.new("Oyeleke", 26, 0.8, tavern)
 amita = Character.new("Amita", 25, 0.7, tavern)
 
-# joe.who_is_here
+joe.who_is_here
 joe.where_am_i
 
 

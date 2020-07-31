@@ -53,3 +53,15 @@ the location where the player currently is.
 Each Location instance should have a list of characters present. Presuming that these characters can only be in one place at 
 a time, the characters could themselves have a "location" property which holds information about where the character presently is.
 Would it be possible for these two values to interact, allowing a change in a character's location to be reflected in the 'character list' of the location.
+
+## Dialogue
+
+While the #greets method is a good template for how the characters can say certain things pseudo-randomly, it will also be necessary to create more unique dialogue. Each dialogue will most likely belong to a speaker, and will be a conversation "tree", allowing for input from the player to influence the course of the conversation. 
+
+## Quests
+
+Another element to introduce is quests/tasks. The protagonist should be able to acquire quests and review active quests.
+
+## Inventory
+
+With the introduction of quests and rewards, it may be necessary to give the protagonist an inventory to story various items.
