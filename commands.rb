@@ -19,6 +19,7 @@ Command.new("greet", -> {$joe.greets})
 Command.new("what can I do?", -> {$joe.what_can_i_do})
 Command.new("who is here?", -> {$joe.who_is_here})
 Command.new("where am I?", -> {$joe.where_am_i})
+Command.new("approach", -> {$joe.approach})
 
 
 def process_input(input)
