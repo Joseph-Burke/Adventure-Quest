@@ -46,3 +46,4 @@ end
 class String
     include Utilities
 end
+

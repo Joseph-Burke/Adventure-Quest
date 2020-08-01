@@ -8,8 +8,6 @@ A repository for a "Choose Your Own Adventure" game you can play in the Command 
 
 ## List of Tasks
 
-1. Give the character class an "activity" property, so that when the player looks around to see which people are there, they will be able to see what people are doing, too.
-
 2. Create an input cycle so the programme will always come back to the player to receive more instructions/commands. There should also be a command to exit the game/input cycle entirely.
 
     b) There should also be a command that allows the player to view some commands/actions available to them.

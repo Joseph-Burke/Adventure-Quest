@@ -1,10 +1,17 @@
+require_relative 'utilities'
+require_relative 'characters'
+require_relative 'locations'
+require_relative 'commands'
+
 class Game
-    attr_accessor :game_active
+    attr_accessor :active
     def initialize
-        @game_active = true
+        @active = true
     end
 
     def end_game
-        @game_active = false
+        @active = false
     end
 end
+
+$game = Game.new

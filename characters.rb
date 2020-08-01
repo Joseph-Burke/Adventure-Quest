@@ -1,5 +1,8 @@
-require_relative './language.rb'
-require_relative './utilities.rb'
+require_relative 'utilities'
+require_relative 'locations'
+require_relative 'commands'
+require_relative 'game'
+require_relative 'language'
 
 class Character
     attr_accessor :name, :age, :friendliness, :location, :activity
@@ -12,6 +15,7 @@ class Character
         @location = args[3]
         location.characters_present.push(self) if @location 
         @activity = args[4]
+        @appearance
     end
 
 end
@@ -46,8 +50,10 @@ class Protagonist < Character
             args.each {|char| (char.name + " is " + char.activity).type}
             empty_line
         end
-        # args.each {|char| (char.name + " is " + char.activity).type('quick')}
     end
 end
 
-
+$joe = Protagonist.new("Joe", 23, 0.5, $tavern, "adventuring, as always.")
+$brandon = Character.new("Brandon", 35, 0.2, $tavern, "sitting by the fire, staring wistfully into the flames.")
+$oyeleke = Character.new("Oyeleke", 26, 0.8, $tavern, "playing cards with Amita. He seems to be losing.")
+$amita = Character.new("Amita", 25, 0.7, $tavern, "playing cards with Oyeleke. She seems to be winning.")
