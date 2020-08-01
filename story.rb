@@ -7,8 +7,11 @@ require_relative 'game'
 commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
 
 # Create an input cycle
+
+$narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:hello])
+
+
 while $game.active
     "What will our hero do next?".type
     process_input(gets.chomp)
 end
-

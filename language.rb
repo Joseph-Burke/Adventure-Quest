@@ -29,6 +29,16 @@ class Laughter < Speech
     POSSIBLE_LAUGHS_ARRAY = []
 end
 
+# __________Narrative SUBCLASS__________
+class Narrative < Speech
+    attr_accessor :words_spoken
+    def initialize(id, words_spoken)
+        @words_spoken = words_spoken
+        POSSIBLE_NARRATIVES_HASH[id] = self
+    end
+    POSSIBLE_NARRATIVES_HASH = {}
+end
+
 # __________SPEAKING MODULE__________
 module Speaking
     def greets
@@ -66,6 +76,17 @@ module Laughing
     end
 end
 
+# __________NARRATING MODULE__________
+
+module Narrating
+    def narrate(narrative, speed="medium")
+        empty_line
+        narrative.words_spoken.type(speed)
+        empty_line
+        wait(1)
+    end
+end
+
 # __________GREETINGS INSTANCES__________
 Greeting.new("Greetings.", 0.4)
 Greeting.new("Hello.", 0.4)
@@ -92,4 +113,5 @@ Laughter.new("Ha, ha, ha!", 0.6)
 Laughter.new("Ho, Ho, Ho!! Splendid, simply splendid!", 0.8)
 Laughter.new("Aaaaahahahaha!", 1)
 
-
+# __________NARRATIVE INSTANCES__________
+Narrative.new(:hello, "Hello")
