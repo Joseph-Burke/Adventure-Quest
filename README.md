@@ -8,13 +8,21 @@ A repository for a "Choose Your Own Adventure" game you can play in the Command 
 
 ## List of Tasks
 
-1. Create a Character class in characters.rb
+1. Give the character class an "activity" property, so that when the player looks around to see which people are there, they will be able to see what people are doing, too.
 
-2. Create a Speaking module in language.rb and include it in the Character class.
+2. Create an input cycle so the programme will always come back to the player to receive more instructions/commands. There should also be a command to exit the game/input cycle entirely.
 
-3. Create a Speech class for items of speech.
+    b) There should also be a command that allows the player to view some commands/actions available to them.
 
-4. Create a universally accessible \$array_of_possible_greetings in the Speaking module and fill it with Speech objects
+3. Create an appearance property for character, so that viewing an unknown character will return a visual description of the character rather than their name. 
+
+4. The appearance property would go well with some kind of introduction method that each character could have to introduce themselves to the player. 
+
+5. Create an "approach" action for the protagonist, allowing them to approach people.
+
+6. Create another adjacent location and give the player the ability to move between them.
+
+7. Perhaps a reusable 'soliloquoy'/muttering/wondering/thinking activity should be available to the hero.
 
 ## Character Speech
 

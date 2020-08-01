@@ -2,7 +2,7 @@ require_relative './language.rb'
 require_relative './utilities.rb'
 
 class Character
-    attr_accessor :name, :age, :friendliness, :location
+    attr_accessor :name, :age, :friendliness, :location, :activity
     include Speaking
     include Laughing
     def initialize(*args)
@@ -11,6 +11,7 @@ class Character
         @friendliness = args[2]
         @location = args[3]
         location.characters_present.push(self) if @location 
+        @activity = args[4]
     end
 
 end
@@ -24,7 +25,7 @@ class Protagonist < Character
         empty_line
         "Our hero takes a look around to see who else is here in #{self.location.name}.".type("quick")
         empty_line
-        location.characters_present.each {|char| wait(rand(1..2)); puts char.name unless char == self}
+        location.characters_present.each {|char| wait(rand(1..2));(char.name + ", who is " + char.activity).type("quick") unless char == self}
         empty_line; wait(1)
     end
 
@@ -33,6 +34,19 @@ class Protagonist < Character
         wait(2)
         self.location.description.type
         empty_line;wait(2)
+    end
+
+    def what_are_they_doing(*args)
+        if args.length == 1
+            "What is #{args[0].name} doing?".type
+        elsif args.length > 1
+            list_of_chars = "#{args[0].name}"; args.drop(1).each {|char| list_of_chars.concat(" and " + char.name)}
+            "What are #{list_of_chars} doing?".type
+            empty_line
+            args.each {|char| (char.name + " is " + char.activity).type}
+            empty_line
+        end
+        # args.each {|char| (char.name + " is " + char.activity).type('quick')}
     end
 end
 
