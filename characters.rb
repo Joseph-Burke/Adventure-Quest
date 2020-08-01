@@ -1,7 +1,7 @@
-# require_relative 'utilities'
-# require_relative 'locations'
-# require_relative 'commands'
-# require_relative 'game'
+require_relative 'utilities'
+require_relative 'locations'
+require_relative 'commands'
+require_relative 'game'
 require_relative 'language'
 
 class Character

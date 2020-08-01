@@ -114,4 +114,4 @@ Laughter.new("Ho, Ho, Ho!! Splendid, simply splendid!", 0.8)
 Laughter.new("Aaaaahahahaha!", 1)
 
 # __________NARRATIVE INSTANCES__________
-Narrative.new(:hello, "Hello")
+Narrative.new(:introduce_story, "Somewhere between two consecutive thoughts, you forget exactly where you are, who you are, and what exactly you are meant to be doing.\nAfter a second, you think to yourself, \"at least I can always type 'what can I do?\" to receive a list of my possible actions.")

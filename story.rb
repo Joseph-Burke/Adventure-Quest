@@ -8,7 +8,7 @@ commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
 
 # Create an input cycle
 
-$narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:hello])
+$narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:introduce_story])
 
 
 while $game.active
