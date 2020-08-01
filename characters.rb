@@ -34,7 +34,7 @@ class Protagonist < Character
     end
 
     def where_am_i
-        empty_line;"What is this place? - our hero mutters, and takes a look around.".type;empty_line
+        empty_line;"What is this place? - our hero mutters, and takes a look around.".type('quick');empty_line
         wait(2)
         self.location.description.type
         empty_line;wait(2)
@@ -50,6 +50,15 @@ class Protagonist < Character
             args.each {|char| (char.name + " is " + char.activity).type}
             empty_line
         end
+    end
+
+    def what_can_i_do
+        "Our hero spends a moment thinking of different things to do, and comes up with the following ideas:".type('quick')
+        empty_line
+        Command::ARRAY_OF_POSSIBLE_COMMANDS.each {|command| command.input.type('quick')}
+        wait(1);empty_line
+        "What a good memory our hero has!".type
+        empty_line
     end
 end
 

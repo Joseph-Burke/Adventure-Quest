@@ -42,7 +42,6 @@ def empty_line(num=1)
     num.times {puts}
 end
 
-
 class String
     include Utilities
 end
