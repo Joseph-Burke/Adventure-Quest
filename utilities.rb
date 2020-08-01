@@ -46,3 +46,13 @@ class String
     include Utilities
 end
 
+module ArrayUtilities
+    def display_options
+        gap = " " * 5
+        empty_line;self.each {|option| print option.to_s + gap};empty_line(2)
+    end
+end
+
+class Array
+    include ArrayUtilities
+end

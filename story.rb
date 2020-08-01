@@ -8,10 +8,11 @@ commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
 
 # Create an input cycle
 
-$narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:introduce_story])
+# $narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:introduce_story])
 
+$joe.approach
 
-while $game.active
-    "What will our hero do next?".type
-    process_input(gets.chomp)
-end
+# while $game.active
+#     "What will our hero do next?".type
+#     process_input(gets.chomp)
+# end

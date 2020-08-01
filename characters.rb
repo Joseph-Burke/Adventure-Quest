@@ -62,10 +62,17 @@ class Protagonist < Character
         empty_line
     end
 
-    def approach(char)
-        "Our hero approaches #{char.name}.".type; wait(1)
-        joe.greets; wait(1)
-        char.greets; wait(1)
+    def approach
+        "Who does our hero approach?".type
+        arr = []; $joe.location.characters_present.each {|char| arr.push(char.name) unless char.is_a?(Protagonist)}
+        arr.display_options
+        target = nil
+        input = gets.chomp.downcase
+        arr.each {|char| (target = input.capitalize;break) if char.downcase == input }
+        "Our hero approaches #{target}, who looks up as our hero nears.".type
+        ARRAY_OF_ALL_CHARACTERS.each {|char| target = char if char.name == target}
+        self.greets
+        target.greets
     end
 end
 
