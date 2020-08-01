@@ -1,7 +1,7 @@
-require_relative 'utilities'
-require_relative 'locations'
-require_relative 'commands'
-require_relative 'game'
+# require_relative 'utilities'
+# require_relative 'locations'
+# require_relative 'commands'
+# require_relative 'game'
 require_relative 'language'
 
 class Character
@@ -13,11 +13,12 @@ class Character
         @age = args[1]
         @friendliness = args[2]
         @location = args[3]
-        location.characters_present.push(self) if @location 
+        location.characters_present.push(self) if @location
         @activity = args[4]
         @appearance
+        ARRAY_OF_ALL_CHARACTERS.push(self)
     end
-
+    ARRAY_OF_ALL_CHARACTERS = []
 end
 
 class Protagonist < Character
@@ -60,9 +61,16 @@ class Protagonist < Character
         "What a good memory our hero has!".type
         empty_line
     end
+
+    def approach(char)
+        "Our hero approaches #{char.name}.".type; wait(1)
+        joe.greets; wait(1)
+        char.greets; wait(1)
+    end
 end
 
 $joe = Protagonist.new("Joe", 23, 0.5, $tavern, "adventuring, as always.")
 $brandon = Character.new("Brandon", 35, 0.2, $tavern, "sitting by the fire, staring wistfully into the flames.")
 $oyeleke = Character.new("Oyeleke", 26, 0.8, $tavern, "playing cards with Amita. He seems to be losing.")
 $amita = Character.new("Amita", 25, 0.7, $tavern, "playing cards with Oyeleke. She seems to be winning.")
+
