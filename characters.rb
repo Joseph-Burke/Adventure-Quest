@@ -5,7 +5,7 @@ require_relative 'game'
 require_relative 'language'
 
 class Character
-    attr_accessor :name, :age, :friendliness, :location, :activity
+    attr_accessor :name, :age, :friendliness, :location, :appearance, :activity
     include Speaking
     include Laughing
     def initialize(*args)
@@ -14,8 +14,9 @@ class Character
         @friendliness = args[2]
         @location = args[3]
         location.characters_present.push(self) if @location
-        @activity = args[4]
-        @appearance
+        @appearance = args[4]
+        @activity = args[5]
+        @known = false
         ARRAY_OF_ALL_CHARACTERS.push(self)
     end
     ARRAY_OF_ALL_CHARACTERS = []
@@ -24,6 +25,8 @@ end
 class Protagonist < Character
     def initialize(*args)
         super
+        @known = true
+
     end
 
     def who_is_here
@@ -80,8 +83,8 @@ class Narrator < Character
     include Narrating
 end
 
-$joe = Protagonist.new("Joe", 23, 0.5, $tavern, "adventuring, as always.")
-$brandon = Character.new("Brandon", 35, 0.2, $tavern, "sitting by the fire, staring wistfully into the flames.")
-$oyeleke = Character.new("Oyeleke", 26, 0.8, $tavern, "playing cards with Amita. He seems to be losing.")
-$amita = Character.new("Amita", 25, 0.7, $tavern, "playing cards with Oyeleke. She seems to be winning.")
+$joe = Protagonist.new("Joe", 23, 0.5, $tavern, nil, "adventuring, as always.")
+$brandon = Character.new("Brandon", 35, 0.2, $tavern, "A tall, dark-haired man in a trenchcoat.", "sitting by the fire, staring wistfully into the flames.")
+$oyeleke = Character.new("Oyeleke", 26, 0.8, $tavern, "A tall man wearing a t-shirt", "playing cards with Amita. He seems to be losing.")
+$amita = Character.new("Amita", 25, 0.7, $tavern, "A small woman wearing a jumper", "playing cards with Oyeleke. She seems to be winning.")
 $narrator = Narrator.new
