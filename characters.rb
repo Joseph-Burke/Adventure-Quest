@@ -79,6 +79,15 @@ class Protagonist < Character
         self.greets
         target.greets
     end
+
+    def make_introductions(*args)
+        introduce_self
+        target = args[0]
+        target.introduce_self
+    end
+
+
+
 end
 
 class Narrator < Character

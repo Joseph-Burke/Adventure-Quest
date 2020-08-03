@@ -78,7 +78,7 @@ module Speaking
         wait(1)
     end
 
-    def introduce_self
+    def introduce_self(*args)
         intro_phrase = Introduction::POSSIBLE_INTRO_ARRAY[0]
         introduction = Speech.new(intro_phrase.words_spoken + self.name + ".", intro_phrase.friendliness)
         says(introduction)

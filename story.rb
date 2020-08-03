@@ -10,14 +10,14 @@ commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
 
 # $narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:introduce_story])
 
-$hero.who_is_here
+# $hero.who_is_here
 
-$hero.introduce_self
-$maiden.introduce_self
-$jester.introduce_self
-$sellsword.introduce_self
+$hero.make_introductions($maiden)
+$hero.make_introductions($hero)
+$hero.make_introductions($jester)
+$hero.make_introductions($sellsword)
 
-$hero.who_is_here
+# $hero.who_is_here
 
 # while $game.active
 #     "What will our hero do next?".type
