@@ -14,5 +14,3 @@ while $game.active
     "What will our hero do next?".type
     process_input(gets.chomp)
 end
-
-p $amita.appearance

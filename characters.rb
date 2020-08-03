@@ -15,8 +15,8 @@ class Character
         @location = args[3]
         location.characters_present.push(self) if @location
         @appearance = args[4]
-        @activity = args[5]
         @known = false
+        @activity = args[5]
         ARRAY_OF_ALL_CHARACTERS.push(self)
     end
     ARRAY_OF_ALL_CHARACTERS = []
@@ -83,8 +83,42 @@ class Narrator < Character
     include Narrating
 end
 
-$joe = Protagonist.new("Joe", 23, 0.5, $tavern, nil, "adventuring, as always.")
-$brandon = Character.new("Brandon", 35, 0.2, $tavern, "A tall, dark-haired man in a trenchcoat.", "sitting by the fire, staring wistfully into the flames.")
-$oyeleke = Character.new("Oyeleke", 26, 0.8, $tavern, "A tall man wearing a t-shirt", "playing cards with Amita. He seems to be losing.")
-$amita = Character.new("Amita", 25, 0.7, $tavern, "A small woman wearing a jumper", "playing cards with Oyeleke. She seems to be winning.")
 $narrator = Narrator.new
+
+$hero = Protagonist.new(
+    nil, 
+    nil, 
+    nil, 
+    $tavern, 
+    "Some kind of hero", 
+    "adventuring, as always."
+)
+
+$sellsword = Character.new(
+    "Jeremiah Flint", 
+    30, 
+    0.2, 
+    $tavern, 
+    "A menacing sellsword. Best not look too long.", 
+    "sharpening his dagger by the fire."
+)
+
+$jester = Character.new(
+    "Philbert Fox", 
+    32, 
+    0.8, 
+    $tavern, 
+    "A weary-looking jester, dressed in somewhat comical attire", 
+    "gloomily draining yet another flagon of mead."
+)
+
+$maiden = Character.new(
+    "Anna Allsop", 
+    25, 
+    0.7, 
+    $tavern, 
+    "A young maiden, dressed in common clothing", 
+    "wiping down tables and clearing away emptied flagons. "
+)
+
+# joe, brandon, oyeleke, amita

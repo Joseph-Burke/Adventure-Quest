@@ -15,11 +15,11 @@ class Command
 end
 
 Command.new("quit game", -> {$game.end_game})
-Command.new("greet", -> {$joe.greets})
-Command.new("what can I do?", -> {$joe.what_can_i_do})
-Command.new("who is here?", -> {$joe.who_is_here})
-Command.new("where am I?", -> {$joe.where_am_i})
-Command.new("approach", -> {$joe.approach})
+Command.new("greet", -> {$hero.greets})
+Command.new("what can I do?", -> {$hero.what_can_i_do})
+Command.new("who is here?", -> {$hero.who_is_here})
+Command.new("where am I?", -> {$hero.where_am_i})
+Command.new("approach", -> {$hero.approach})
 
 
 def process_input(input)
