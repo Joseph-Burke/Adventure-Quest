@@ -5,7 +5,7 @@ require_relative 'game'
 require_relative 'language'
 
 class Character
-    attr_accessor :name, :age, :friendliness, :location, :appearance, :activity
+    attr_accessor :name, :age, :friendliness, :location, :appearance, :activity, :known
     include Speaking
     include Laughing
     def initialize(*args)
@@ -33,7 +33,10 @@ class Protagonist < Character
         empty_line
         "Our hero takes a look around to see who else is here in #{self.location.name}.".type("quick")
         empty_line
-        location.characters_present.each {|char| wait(rand(1..2));(char.name + ", who is " + char.activity).type("quick") unless char == self}
+        location.characters_present.each do |char| 
+            wait(rand(1..2))
+            ( (char.known ? char.name : char.appearance) + ", who is " + char.activity).type("quick") unless char == self
+        end
         empty_line; wait(1)
     end
 
@@ -99,7 +102,7 @@ $sellsword = Character.new(
     30, 
     0.2, 
     $tavern, 
-    "A menacing sellsword. Best not look too long.", 
+    "A menacing sellsword, (best not look too long)", 
     "sharpening his dagger by the fire."
 )
 
@@ -108,7 +111,7 @@ $jester = Character.new(
     32, 
     0.8, 
     $tavern, 
-    "A weary-looking jester, dressed in somewhat comical attire", 
+    "A weary-looking jester in somewhat comical attire", 
     "gloomily draining yet another flagon of mead."
 )
 
@@ -117,8 +120,6 @@ $maiden = Character.new(
     25, 
     0.7, 
     $tavern, 
-    "A young maiden, dressed in common clothing", 
+    "A fair young maiden dressed in common clothing", 
     "wiping down tables and clearing away emptied flagons. "
 )
-
-# joe, brandon, oyeleke, amita
