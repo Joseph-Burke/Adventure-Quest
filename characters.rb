@@ -17,7 +17,7 @@ class Character
         @appearance = args[4]
         @known = false
         @activity = args[5]
-        ARRAY_OF_ALL_CHARACTERS.push(self)
+        ARRAY_OF_ALL_CHARACTERS.push(self) unless is_a?(Narrator)
     end
     ARRAY_OF_ALL_CHARACTERS = []
 end
@@ -81,12 +81,10 @@ class Protagonist < Character
     end
 
     def make_introductions(*args)
+        target = get_target
         introduce_self
-        target = args[0]
         target.introduce_self
     end
-
-
 
 end
 
