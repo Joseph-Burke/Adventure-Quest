@@ -29,6 +29,15 @@ class Laughter < Speech
     POSSIBLE_LAUGHS_ARRAY = []
 end
 
+# __________INTRODUCTION SUBCLASS__________
+class Introduction < Speech
+    def initialize(*args)
+        super
+        POSSIBLE_INTRO_ARRAY.push(self)
+    end
+    POSSIBLE_INTRO_ARRAY = []
+end
+
 # __________Narrative SUBCLASS__________
 class Narrative < Speech
     attr_accessor :words_spoken
@@ -62,11 +71,18 @@ module Speaking
 
     def says(speech_object, speed="medium")
         empty_line
-        puts name + " says:"
+        puts (name + " says:")
         empty_line
         speech_object.words_spoken.type(speed)
         empty_line
         wait(1)
+    end
+
+    def introduce_self
+        intro_phrase = Introduction::POSSIBLE_INTRO_ARRAY[0]
+        introduction = Speech.new(intro_phrase.words_spoken + self.name + ".", intro_phrase.friendliness)
+        says(introduction)
+        self.known = true
     end
 end
 # __________LAUGHING MODULE__________
@@ -115,3 +131,6 @@ Laughter.new("Aaaaahahahaha!", 1)
 
 # __________NARRATIVE INSTANCES__________
 Narrative.new(:introduce_story, "Somewhere between two consecutive thoughts, our hero forgets exactly where they are, who they are, and what exactly they are meant to be doing.\nAfter a second, our hero thinks to themself, \"at least I can always type 'what can I do?\" to receive a list of my possible actions.")
+
+# __________INTRODUCTION INSTANCES__________
+Introduction.new("My name is ", 0.5)

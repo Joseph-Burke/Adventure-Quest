@@ -26,7 +26,6 @@ class Protagonist < Character
     def initialize(*args)
         super
         @known = true
-
     end
 
     def who_is_here
@@ -89,8 +88,8 @@ end
 $narrator = Narrator.new
 
 $hero = Protagonist.new(
-    nil, 
-    nil, 
+    "Joe", 
+    "The perfect age for adventuring", 
     nil, 
     $tavern, 
     "Some kind of hero", 
@@ -102,7 +101,7 @@ $sellsword = Character.new(
     30, 
     0.2, 
     $tavern, 
-    "A menacing sellsword, (best not look too long)", 
+    "A menacing sellsword dressed in black", 
     "sharpening his dagger by the fire."
 )
 
