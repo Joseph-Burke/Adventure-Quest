@@ -97,7 +97,7 @@ $narrator = Narrator.new
 $hero = Protagonist.new(
     "Joe", 
     "The perfect age for adventuring", 
-    nil, 
+    0.5, 
     $tavern, 
     "Some kind of hero", 
     "adventuring, as always."
