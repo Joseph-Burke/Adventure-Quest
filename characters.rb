@@ -65,7 +65,7 @@ class Protagonist < Character
     def what_can_i_do
         "Our hero spends a moment thinking of different things to do, and comes up with the following ideas:".type('quick')
         empty_line
-        Command::ARRAY_OF_POSSIBLE_COMMANDS.each {|command| command.input.type('quick')}
+        Command.array_of_possible_commands.each {|command| command.input.type('quick')}
         wait(1);empty_line
         "What a good memory our hero has!".type
         empty_line
@@ -73,7 +73,7 @@ class Protagonist < Character
 
     def approach
         "Who does our hero approach?".type
-        arr = []; $joe.location.characters_present.each {|char| arr.push(char.name) unless char.is_a?(Protagonist)}
+        arr = []; $hero.location.characters_present.each {|char| arr.push(char.name) unless char.is_a?(Protagonist)}
         arr.display_options
         target = nil
         input = gets.chomp.downcase

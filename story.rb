@@ -24,9 +24,17 @@ commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
 # $hero.change_location(:tavern)
 # $hero.where_am_i
 
-p get_location_target
+# p get_location_target
 
-# while $game.active
-#     "What will our hero do next?".type
-#     process_input(gets.chomp)
-# end
+p Command.array_of_possible_commands
+
+# Command.array_of_possible_commands = ["hey"]
+
+# Command.array_of_possible_commands.push("what's up?")
+
+p Command.array_of_possible_commands
+
+while $game.active
+    "What will our hero do next?".type
+    process_input(gets.chomp)
+end
