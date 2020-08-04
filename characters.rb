@@ -3,11 +3,13 @@ require_relative 'locations'
 require_relative 'commands'
 require_relative 'game'
 require_relative 'language'
+require_relative 'movement'
 
 class Character
     attr_accessor :name, :age, :friendliness, :location, :appearance, :activity, :known
     include Speaking
     include Laughing
+    include Moving
     def initialize(*args)
         @name = args[0]
         @age = args[1]
@@ -41,7 +43,9 @@ class Protagonist < Character
 
     def where_am_i
         empty_line;"What is this place? - our hero mutters, and takes a look around.".type('quick');empty_line
+        # empty_line;puts "What is this place? - our hero mutters, and takes a look around.";empty_line
         wait(2)
+        # puts self.location.description
         self.location.description.type
         empty_line;wait(2)
     end
@@ -92,6 +96,7 @@ class Narrator < Character
     include Narrating
 end
 
+# CREATE CHARACTERS
 $narrator = Narrator.new
 
 $hero = Protagonist.new(

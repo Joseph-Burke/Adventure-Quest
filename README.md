@@ -8,15 +8,11 @@ A repository for a "Choose Your Own Adventure" game you can play in the Command 
 
 ## List of Tasks
 
-1. Create an appearance property for character, so that viewing an unknown character will return a visual description of the character rather than their name. 
+1. A major refactor is required, to look at the work that I've done and see what improvements can be made to the existing structure ofn the project.
 
-2. The appearance property would go well with some kind of introduction method that each character could have to introduce themselves to the player. 
+2. Create another adjacent location and give the player the ability to move between them.
 
-3. Create another adjacent location and give the player the ability to move between them.
-
-4. Perhaps a reusable 'soliloquoy'/muttering/wondering/thinking activity should be available to the hero.
-
-5. A reusable utility class to select a target for certain actions would be useful. 
+3. Perhaps a reusable 'soliloquoy'/muttering/wondering/thinking activity should be available to the hero.
 
 ## Character Speech
 

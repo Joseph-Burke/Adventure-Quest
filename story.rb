@@ -3,14 +3,30 @@ require_relative 'characters'
 require_relative 'locations'
 require_relative 'commands'
 require_relative 'game'
+require_relative 'movement'
 
 commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
 
-# Create an input cycle
+# p $tavern.id
+# p $town_square.id
 
-# $narrator.narrate(Narrative::POSSIBLE_NARRATIVES_HASH[:introduce_story])
+# p $tavern.accessible_locations
+# p $town_square.accessible_locations
 
-while $game.active
-    "What will our hero do next?".type
-    process_input(gets.chomp)
-end
+# Location::ARRAY_OF_LOCATIONS.each do |loc|
+#     p loc
+#     empty_line(2)
+# end
+
+# $hero.where_am_i
+# $hero.change_location(:town_square)
+# $hero.where_am_i
+# $hero.change_location(:tavern)
+# $hero.where_am_i
+
+p get_location_target
+
+# while $game.active
+#     "What will our hero do next?".type
+#     process_input(gets.chomp)
+# end
