@@ -11,16 +11,8 @@ class Command
         @@array_of_possible_commands.push(self)
     end
 
-    ARRAY_OF_POSSIBLE_COMMANDS = []
-
-
-
     def self.array_of_possible_commands
         @@array_of_possible_commands
-    end
-
-    def self.array_of_possible_commands=(arg)
-        @@array_of_possible_commands = arg
     end
 
     @@array_of_possible_commands = []

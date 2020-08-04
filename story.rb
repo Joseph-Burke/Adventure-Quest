@@ -5,8 +5,6 @@ require_relative 'commands'
 require_relative 'game'
 require_relative 'movement'
 
-commands = Command::ARRAY_OF_POSSIBLE_COMMANDS
-
 # p $tavern.id
 # p $town_square.id
 
