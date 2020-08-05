@@ -22,7 +22,7 @@ def roll_dice(probability)
     false
 end
 
-module Utilities
+class String
     def type(speed='medium')
         case speed
         when 'slow' || 3
@@ -42,17 +42,9 @@ def empty_line(num=1)
     num.times {puts}
 end
 
-class String
-    include Utilities
-end
-
-module ArrayUtilities
+class Array
     def display_options
         gap = " " * 5
         empty_line;self.each {|option| print option.to_s + gap};empty_line(2)
     end
-end
-
-class Array
-    include ArrayUtilities
 end
