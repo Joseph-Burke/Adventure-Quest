@@ -12,7 +12,7 @@ class Location
         @accessible_locations = []
         @characters_present = []
 
-        ARRAY_OF_LOCATIONS.push(self)
+        @@array_of_locations.push(self)
         
         HASH_OF_ACCESS.each do |key, value| 
             if key == @id
@@ -26,7 +26,15 @@ class Location
         :town_square => [:tavern]
     }
 
-    ARRAY_OF_LOCATIONS = []
+    @@array_of_locations = []
+
+    def self.array_of_locations
+        @@array_of_locations
+    end
+
+     def self.array_of_locations=(arg)
+        @@array_of_locations = arg
+    end
 
 end
 

@@ -8,7 +8,6 @@ require_relative 'movement'
 class Character
     attr_accessor :name, :age, :friendliness, :location, :appearance, :activity, :known
     include Speaking
-    include Laughing
     include Moving
 
     def initialize(*args)
@@ -25,9 +24,14 @@ class Character
 
     @@array_of_all_characters = []
 
-    class << self
-        attr_accessor :array_of_all_characters
+    def self.array_of_all_characters
+        @@array_of_all_characters
     end
+
+     def self.array_of_all_characters=(arg)
+        @@array_of_all_characters = arg
+    end
+
 end
 
 class Protagonist < Character
@@ -49,9 +53,7 @@ class Protagonist < Character
 
     def where_am_i
         empty_line;"What is this place? - our hero mutters, and takes a look around.".type('quick');empty_line
-        # empty_line;puts "What is this place? - our hero mutters, and takes a look around.";empty_line
         wait(2)
-        # puts self.location.description
         self.location.description.type
         empty_line;wait(2)
     end
@@ -85,7 +87,7 @@ class Protagonist < Character
         input = gets.chomp.downcase
         arr.each {|char| (target = input.capitalize;break) if char.downcase == input }
         "Our hero approaches #{target}, who looks up as our hero nears.".type
-        @@array_of_all_characters.each {|char| target = char if char.name == target}
+        Character.array_of_all_characters.each {|char| target = char if char.name.downcase == input}
         self.greets
         target.greets
     end

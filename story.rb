@@ -1,3 +1,4 @@
+require_relative 'language'
 require_relative 'utilities'
 require_relative 'characters'
 require_relative 'locations'

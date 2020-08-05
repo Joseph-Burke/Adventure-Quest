@@ -1,4 +1,5 @@
 require_relative './utilities.rb'
+
 # __________SPEECH SUPERCLASS__________
 class Speech
     attr_accessor :words_spoken, :friendliness
@@ -11,30 +12,23 @@ class Speech
         @words_spoken.type(speed)
     end
 end
+
 # __________GREETING SUBCLASS__________
 class Greeting < Speech
     def initialize(*args)
         super
-        POSSIBLE_GREETINGS_ARRAY.push(self)
+        @@possible_greetings_array.push(self)
     end
-    POSSIBLE_GREETINGS_ARRAY = []
-end
-# __________LAUGHTER SUBCLASS__________
-class Laughter < Speech
-    def initialize(*args)
-        super
-        POSSIBLE_LAUGHS_ARRAY.push(self)
-    end
-    POSSIBLE_LAUGHS_ARRAY = []
-end
 
-# __________INTRODUCTION SUBCLASS__________
-class Introduction < Speech
-    def initialize(*args)
-        super
-        POSSIBLE_INTRO_ARRAY.push(self)
+    @@possible_greetings_array = []
+
+    def self.possible_greetings_array=(arg)
+        @@possible_greetings_array = arg
     end
-    POSSIBLE_INTRO_ARRAY = []
+
+    def self.possible_greetings_array
+        @@possible_greetings_array
+    end
 end
 
 # __________Narrative SUBCLASS__________
@@ -42,16 +36,29 @@ class Narrative < Speech
     attr_accessor :words_spoken
     def initialize(id, words_spoken)
         @words_spoken = words_spoken
-        POSSIBLE_NARRATIVES_HASH[id] = self
+        @@possible_narratives_hash[id] = self
     end
-    POSSIBLE_NARRATIVES_HASH = {}
+
+    @@possible_narratives_hash = {}
+
+    # Again, this is the only way I have been able to make the class attribute "possible narratives hash" accessible. 
+    # How to make it work with an attr_accessor?
+    # Annoying.
+    def self.possible_narratives_hash
+        @@possible_narratives_hash
+    end
+
+    def self.possible_narratives_hash=(arg)
+        @@possible_narratives_hash = arg
+    end
+
 end
 
 # __________SPEAKING MODULE__________
 module Speaking
     def greets
         greeting = nil
-        arr = Greeting::POSSIBLE_GREETINGS_ARRAY
+        arr = Greeting.possible_greetings_array
         while greeting.nil?
             possible_greeting = arr[rand(arr.length)]
             difference = (self.friendliness - possible_greeting.friendliness).round(1).abs
@@ -78,16 +85,10 @@ module Speaking
     end
 
     def introduce_self(*args)
-        intro_phrase = Introduction::POSSIBLE_INTRO_ARRAY[0]
-        introduction = Speech.new(intro_phrase.words_spoken + self.name + ".", intro_phrase.friendliness)
+        intro_phrase = "My name is "
+        introduction = Speech.new(intro_phrase + self.name + ".")
         says(introduction)
         self.known = true
-    end
-end
-# __________LAUGHING MODULE__________
-module Laughing
-    def laughs
-        puts
     end
 end
 
@@ -117,19 +118,5 @@ Greeting.new("How goes it?", 0.7)
 Greeting.new("What do you want?", 0.3)
 Greeting.new("What are you looking at?", 0.2)
 
-# __________LAUGHTER INSTANCES__________
-Laughter.new("What?", 0.1)
-Laughter.new("Har, har. Well aren't you funny...", 0.2)
-Laughter.new("Ha! That's a good one, I'll give you that.", 0.4)
-Laughter.new("He, he, he, nice one.", 0.5)
-Laughter.new("Hee-hee!", 0.6)
-Laughter.new("Ha, ha, ha. Very good.", 0.6)
-Laughter.new("Ha, ha, ha!", 0.6)
-Laughter.new("Ho, Ho, Ho!! Splendid, simply splendid!", 0.8)
-Laughter.new("Aaaaahahahaha!", 1)
-
 # __________NARRATIVE INSTANCES__________
 Narrative.new(:introduce_story, "Somewhere between two consecutive thoughts, our hero forgets exactly where they are, who they are, and what exactly they are meant to be doing.\nAfter a second, our hero thinks to themself, \"at least I can always type 'what can I do?\" to receive a list of my possible actions.")
-
-# __________INTRODUCTION INSTANCES__________
-Introduction.new("My name is ", 0.5)
