@@ -10,6 +10,7 @@ class Character
     include Speaking
     include Laughing
     include Moving
+
     def initialize(*args)
         @name = args[0]
         @age = args[1]
@@ -19,9 +20,14 @@ class Character
         @appearance = args[4]
         @known = false
         @activity = args[5]
-        ARRAY_OF_ALL_CHARACTERS.push(self) unless is_a?(Narrator)
+        @@array_of_all_characters.push(self) unless is_a?(Narrator)
     end
-    ARRAY_OF_ALL_CHARACTERS = []
+
+    @@array_of_all_characters = []
+
+    class << self
+        attr_accessor :array_of_all_characters
+    end
 end
 
 class Protagonist < Character
@@ -79,7 +85,7 @@ class Protagonist < Character
         input = gets.chomp.downcase
         arr.each {|char| (target = input.capitalize;break) if char.downcase == input }
         "Our hero approaches #{target}, who looks up as our hero nears.".type
-        ARRAY_OF_ALL_CHARACTERS.each {|char| target = char if char.name == target}
+        @@array_of_all_characters.each {|char| target = char if char.name == target}
         self.greets
         target.greets
     end

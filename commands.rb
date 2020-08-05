@@ -32,7 +32,7 @@ def get_target
     "Select your target:".type
     arr_of_options.display_options
     target = gets.chomp.downcase
-    Character::ARRAY_OF_ALL_CHARACTERS.each {|char| return char if target == char.name.downcase}
+    Character.array_of_all_characters.each {|char| return char if target == char.name.downcase}
 end
 
 def get_location_target

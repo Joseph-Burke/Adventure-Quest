@@ -2,7 +2,6 @@ require_relative './utilities.rb'
 # __________SPEECH SUPERCLASS__________
 class Speech
     attr_accessor :words_spoken, :friendliness
-    include Utilities
     def initialize(*args)
         @words_spoken = args[0]
         @friendliness = args[1]

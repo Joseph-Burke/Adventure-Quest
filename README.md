@@ -14,6 +14,8 @@ A repository for a "Choose Your Own Adventure" game you can play in the Command 
 
 3. Perhaps a reusable 'soliloquoy'/muttering/wondering/thinking activity should be available to the hero.
 
+Note: Creating classes for different types of speech might not be entirely appropriate. Most of these objects do not need to access any methods. Consider using hashes, perhaps belonging to a single "Speech" class.
+
 ## Character Speech
 
 Every character will have, for example, a #greet method.
