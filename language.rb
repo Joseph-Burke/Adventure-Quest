@@ -44,11 +44,11 @@ class Narrative < Speech
     # Again, this is the only way I have been able to make the class attribute "possible narratives hash" accessible. 
     # How to make it work with an attr_accessor?
     # Annoying.
-    def self.possible_narratives_hash
+    def Narrative.possible_narratives_hash
         @@possible_narratives_hash
     end
 
-    def self.possible_narratives_hash=(arg)
+    def Narrative.possible_narratives_hash=(arg)
         @@possible_narratives_hash = arg
     end
 
