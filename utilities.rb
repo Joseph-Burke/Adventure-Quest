@@ -22,7 +22,7 @@ def roll_dice(probability)
     false
 end
 
-class String
+module Typable
     def type(speed='medium')
         case speed
         when 'slow' || 3

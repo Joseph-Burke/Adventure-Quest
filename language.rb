@@ -2,10 +2,8 @@
 
 
 # __________SPEAKING MODULE__________
-
-module 
-
 class Speech < Hash
+    include Typable
     def intialize
     end
 end
@@ -14,7 +12,7 @@ speech = Speech.new
 
 speech[:words] = 'Hello, there!'
 
-puts speech
+puts speech[:words]
 
 # What do I want the Speech class to do?
 
