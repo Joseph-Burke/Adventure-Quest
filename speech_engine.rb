@@ -31,13 +31,22 @@ class String
 end
 
 class Person
-  def initialize
+  attr_accessor :properties
+  def initialize(*args)
+    @properties = args[0]
   end
 
   def says(speech)
     speech.words.type_out if speech.is_a?(Speech)
     speech.type_out if speech.is_a?(String)
   end
+
+  def greet
+    arr = Greeting::ALL_GREETINGS
+    # says(arr[rand(arr.length)])
+    puts (arr[rand(arr.length)])
+  end
+
 end
 
 class Speech
@@ -48,20 +57,12 @@ class Speech
     Speech::ALL_SPEECHES.push(self)
   end
 
+  def to_s
+    @words
+  end
+
   Speech::ALL_SPEECHES = []
-
 end
-
-speech = Speech.new(
-  'hello',
-  {
-    :friendliness => 0.5,
-  }
-)
-
-person = Person.new
-
-person.says(speech)
 
 class Greeting < Speech
   def initialize(*args)
@@ -72,6 +73,33 @@ class Greeting < Speech
   Greeting::ALL_GREETINGS = []
 end
 
-Greeting.new('Hello there!',{:friendliness => 0.5})
+# GENERATE 11**2 GREETINGS OF ALL FRIENDLINESS AND FORMALITY COMBINATIONS 
+(0).upto(10) do |i|
+  friendliness = i.to_f / 10
+  (0).upto(10) do |j|
+    formality = j.to_f / 10
+    Greeting.new("Hello. Friendliness: #{friendliness}. Formality: #{formality}.")
+  end
+end
 
-person.says(Greeting::ALL_GREETINGS[0])
+# TEST CHAR.GREET
+char = Person.new
+char.greet
+
+
+
+# Greeting::ALL_GREETINGS.each { |greeting| char.says(greeting) }
+
+# Greeting.new('Hello.',{:friendliness => 0})
+# Greeting.new("Hello.",{:friendliness => 0.1})
+# Greeting.new("Hello.",{:friendliness => 0.2})
+# Greeting.new("Hello.",{:friendliness => 0.3})
+# Greeting.new("Hello.",{:friendliness => 0.4})
+# Greeting.new("Hello.",{:friendliness => 0.5})
+# Greeting.new('Hello.',{:friendliness => 0.6})
+# Greeting.new('Hello.',{:friendliness => 0.7})
+# Greeting.new('Hello.',{:friendliness => 0.8})
+# Greeting.new('Hello.',{:friendliness => 0.9})
+# Greeting.new('Hello.',{:friendliness => 1})
+
+# person.says(Greeting::ALL_GREETINGS[0])
