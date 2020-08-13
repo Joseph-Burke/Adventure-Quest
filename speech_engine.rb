@@ -43,14 +43,20 @@ class Person
 
   def greet
     arr = Greeting::ALL_GREETINGS
-    # says(arr[rand(arr.length)])
-    puts (arr[rand(arr.length)])
+    chosen_greeting = nil
+    until chosen_greeting
+      possible_greeting = arr[rand(arr.length)]
+      chosen_greeting = possible_greeting if possible_greeting.properties[:friendliness] == self.properties[:friendliness]
+    end
+
+    says(chosen_greeting) if chosen_greeting.properties[:friendliness]
+    p chosen_greeting.properties
   end
 
 end
 
 class Speech
-  attr_accessor :words
+  attr_accessor :words, :properties
   def initialize(*args)
     @words = args[0]
     @properties = args[1]
@@ -65,6 +71,7 @@ class Speech
 end
 
 class Greeting < Speech
+  attr_accessor :words, :properties
   def initialize(*args)
     super
     Greeting::ALL_GREETINGS.push(self)
@@ -78,12 +85,22 @@ end
   friendliness = i.to_f / 10
   (0).upto(10) do |j|
     formality = j.to_f / 10
-    Greeting.new("Hello. Friendliness: #{friendliness}. Formality: #{formality}.")
+    Greeting.new(
+      "Hello. Friendliness: #{friendliness}. Formality: #{formality}.",
+      {
+        :friendliness => friendliness,
+        :formality => formality,
+    }
+    )
   end
 end
 
 # TEST CHAR.GREET
-char = Person.new
+char = Person.new({
+  :friendliness => 0.5,
+  :formality => 0.5
+})
+
 char.greet
 
 
