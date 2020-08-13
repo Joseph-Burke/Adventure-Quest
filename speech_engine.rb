@@ -39,7 +39,13 @@ class Person
     end
 end
 
-speech = 'Hello'
+class Speech < String
+    def initialize(string)
+        super
+    end
+end
+
+speech = Speech.new("hello")
 person = Person.new
 
 person.says(speech)
