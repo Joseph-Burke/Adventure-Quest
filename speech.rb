@@ -18,30 +18,39 @@ class String
     include Typable
 end
 
-class Speech < Hash
-    include Typable
-    def initialize
+class Speech < String
+    def initialize(string)
+        @properties = Hash.new
+        # take_properties_from(input_hash)
     end
+
+    def take_properties_from(hash)
+        hash.each { |key, value| @properties[key] = value}
+    end
+
 end
 
 class Character
-    include Typable
     attr_accessor :name, :age, :friendliness, :location, :appearance, :activity, :known
-
     def initialize
     end
 
-    def says(something)
-        something.type if something.is_a?(String)
-        something[:words].type if something.is_a?(Speech)
+    def says(arg)
+        arg.type
     end
 
 end
 
-
 char = Character.new
-speech = Speech.new
-speech[:words] = "World"
+speech = Speech.new(
+        "Hello!"
+        {
+        :friendliness => 0.5,
+        :formality => 0.6
+    }
+)
 
-puts char.says("Hello")
-puts char.says(speech)
+char.says(speech)
+
+puts speech
+
