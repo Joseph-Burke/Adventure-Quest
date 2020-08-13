@@ -45,16 +45,33 @@ class Speech
   def initialize(*args)
     @words = args[0]
     @properties = args[1]
+    Speech::ALL_SPEECHES.push(self)
   end
+
+  Speech::ALL_SPEECHES = []
+
 end
 
 speech = Speech.new(
   'hello',
   {
     :friendliness => 0.5,
-    :formality => 0.5
   }
 )
+
 person = Person.new
 
 person.says(speech)
+
+class Greeting < Speech
+  def initialize(*args)
+    super
+    Greeting::ALL_GREETINGS.push(self)
+  end
+
+  Greeting::ALL_GREETINGS = []
+end
+
+Greeting.new('Hello there!',{:friendliness => 0.5})
+
+person.says(Greeting::ALL_GREETINGS[0])
